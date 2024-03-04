@@ -1,4 +1,4 @@
-module github.com/yairp7/GoEventLoop
+module github.com/yairp7/go-event-loop
 
 go 1.18
 
