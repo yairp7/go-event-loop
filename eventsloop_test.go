@@ -1,4 +1,4 @@
-package eventsloop
+package eventsloop_test
 
 import (
 	"context"
@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
+	eventsloop "github.com/yairp7/go-event-loop"
 )
 
 type EventsLoopTestProcessor struct {
@@ -39,7 +40,7 @@ func (p *EventsLoopTestProcessor) ProcessEvent(event string) {
 
 func TestAddEvents(t *testing.T) {
 	processor := newEventsLoopTestProcessor()
-	eventLoop := NewEventLoop[string](EventLoopOptions{
+	eventLoop := eventsloop.NewEventLoop[string](eventsloop.EventLoopOptions{
 		MaxQueueSize: 10,
 	}, &processor)
 
@@ -69,7 +70,7 @@ func TestAddEvents(t *testing.T) {
 
 func TestTimeout(t *testing.T) {
 	processor := newEventsLoopTestProcessor()
-	eventLoop := NewEventLoop[string](EventLoopOptions{
+	eventLoop := eventsloop.NewEventLoop[string](eventsloop.EventLoopOptions{
 		MaxQueueSize: 10,
 	}, &processor)
 
@@ -91,7 +92,7 @@ func TestTimeout(t *testing.T) {
 
 func TestClose(t *testing.T) {
 	processor := newEventsLoopTestProcessor()
-	eventLoop := NewEventLoop[string](EventLoopOptions{
+	eventLoop := eventsloop.NewEventLoop[string](eventsloop.EventLoopOptions{
 		MaxQueueSize: 10,
 	}, &processor)
 
